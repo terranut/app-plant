@@ -1,0 +1,60 @@
+<!-- Badge.stories.mdx -->
+
+import { Canvas, Meta, Story, ArgsTable } from '@storybook/addon-docs';
+
+import { Stack, Box, Flex } from '../..';
+import { Icons, Icon } from './index.tsx';
+
+<Meta
+  title="Media/Icons"
+  component={Icon}
+  argTypes={{
+    iconName: {
+      control: { type: 'select' },
+      options: Icons,
+      defaultValue: '',
+    },
+  }}
+/>
+
+export const Template = (args) => <Icon {...args} />;
+
+<!--- Component documentation -->
+
+# Icon
+
+- [Icon list](#iconlist)
+- [Sizes](#sizes)
+
+Usamos la librería de [iconsax-react](https://iconsax-react.pages.dev/)
+
+<Canvas>
+  <Story name="Overview">
+    <Template />
+  </Story>
+</Canvas>
+
+export const IconList = () => {
+  return (
+    <>
+      <Flex direction="row" w="100%" flexWrap="wrap">
+        {Object.keys(Icons).map((iconName) => (
+          <Flex align={'center'} key={iconName} m={4} minW={'190px'}>
+            <Icon iconName={iconName} mr={3} boxSize="26px" />
+            <Text mt={2}>{iconName}</Text>
+          </Flex>
+        ))}
+      </Flex>
+    </>
+  );
+};
+
+## IconList
+
+<Canvas>
+  <Story name="Icon list">
+    <IconList />
+  </Story>
+</Canvas>
+
+## Sizes
